@@ -1,4 +1,5 @@
 _site
+_sample
 .sass-cache
 .jekyll-metadata
 Gemfile.lock
