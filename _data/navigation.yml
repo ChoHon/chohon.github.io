@@ -6,3 +6,13 @@ main:
     url: /categories/
   - title: "Tag"
     url: /tags/
+  - title: "Portfolio"
+
+docs:
+  - title: "💻 Development"
+    children:
+      - title: "DB"
+        url: /dev/db
+      - title: "Blog"
+        url: /blog
+        

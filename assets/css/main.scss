@@ -1,7 +1,7 @@
-// ---
-// # Only the main Sass file needs front matter (the dashes are enough)
-// search: false
-// ---
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+search: false
+---
 
 @charset "utf-8";
 
@@ -9,10 +9,10 @@
 @import "minimal-mistakes"; // main partials
 
 .btn--copyUrl {
-    background-color: #2b7fff;
+    background-color: #00598a;
     color: #fff;
 }
 .btn--copyUrl:hover {
-    background-color: #193cb8;
+    background-color: #0c4a6e;
     color: #fff;
 }
