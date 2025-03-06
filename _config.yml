@@ -42,7 +42,7 @@ comments:
 #     appid                :
 #     num_posts            : # 5 (default)
 #     colorscheme          : # "light" (default), "dark"
-  utterances: https://utteranc.es
+  utterances:
     repo                 : "ChoHon/chohon.github.io"
     theme                : "photon-dark" # "github-light" (default), "github-dark"
     issue_term           : "og:title" # "pathname" (default)
