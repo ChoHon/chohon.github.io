@@ -31,10 +31,10 @@ words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
 copyright                : # "copyright" name, defaults to site.title
 copyright_url            : # "copyright" URL, defaults to site.url
-comments:
-  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
-  disqus:
-    shortname            : "chohon-github-io" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+# comments:
+#   provider               : "utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  # disqus:
+  #   shortname            : "chohon-github-io" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
 #   discourse:
 #     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
 #   facebook:
@@ -42,9 +42,9 @@ comments:
 #     appid                :
 #     num_posts            : # 5 (default)
 #     colorscheme          : # "light" (default), "dark"
-#   utterances:
-#     theme                : # "github-light" (default), "github-dark"
-#     issue_term           : # "pathname" (default)
+  # utterances:
+  #   theme                : # "github-light" (default), "github-dark"
+  #   issue_term           : # "pathname" (default)
 #   giscus:
 #     repo_id              : # Shown during giscus setup at https://giscus.app
 #     category_name        : # Full text name of the category
@@ -260,6 +260,6 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      # comments: true
       share: true
       related: true
