@@ -29,11 +29,15 @@ masthead_title           : # overrides the website title displayed in the masthe
 breadcrumbs              : # true, false (default)
 words_per_minute         : 200
 enable_copy_code_button  : # true, false (default)
+
+# Comments
 comments:
   provider               : "utterances"
   utterances:
     theme                : "photon-dark"
     issue_term           : "og:title"
+
+# Search
 search                   : true
 search_full_content      : # true, false (default)
 
