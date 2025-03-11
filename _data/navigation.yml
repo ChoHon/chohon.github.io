@@ -13,6 +13,6 @@ docs:
     children:
       - title: "DB"
         url: /dev/db
-      - title: "Blog"
-        url: /blog
+      - title: "Network"
+        url: /dev/network
         
