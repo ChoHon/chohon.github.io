@@ -1,7 +1,7 @@
 ---
-title: "DB"
+title: "CS"
 layout: archive
-permalink: /dev/db
+permalink: /dev/cs
 author_profile: true
 types: posts
 sidebar:
@@ -9,8 +9,8 @@ sidebar:
 ---
 
 {% assign postsDev = site.posts | where: "categories", "development" %}
-{% assign postsDB = postsDev | where: "categories", "db" %}
+{% assign postsCS = postsDev | where: "categories", "cs" %}
 
-{% for post in postsDB %}
+{% for post in postsCS %}
   {% include archive-single.html type=page.entries_layout %}
 {% endfor %}

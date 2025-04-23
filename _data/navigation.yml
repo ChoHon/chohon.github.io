@@ -11,8 +11,8 @@ main:
 docs:
   - title: "💻 Development"
     children:
-      - title: "DB"
-        url: /dev/db
+      - title: "CS"
+        url: /dev/cs
       - title: "Network"
         url: /dev/network
         
