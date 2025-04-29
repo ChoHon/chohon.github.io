@@ -100,23 +100,32 @@ G에서 동기 시스템 콜을 호출하면 M까지 Block 된다
 
 이 경우에는 P는 새로운 M을 만들어서 LRQ의 다른 G를 할당한다
 
-### Work Stealing
+### Reuse Thread and Work Stealing
 
 고루틴 시스템에서 가장 피해야하는 상황은 M이 대기 상태가 되는 것이다
 
 M가 대기 상태가 될 경우 OS가 M을 물리적 코어에서 빼버리면서 Thread 단위의 Context Switch가 발생하기 때문이다
 
-P는 자신의 LRQ의 G를 모두 처리하면 대기하는 것이 아니라 다른 P의 LRQ에서 G를 가져온다(`Work Stealing`)
+P는 자신의 LRQ의 G를 모두 처리하면 할당된 M을 바로 OS에 반납하지 않는다
+
+일정 시간 동안 idle 상태로 관리하거나 다른 P의 LRQ에서 G를 가져온다(`Work Stealing`)
 
 물론 `Work Strealing`에도 Overhead가 있기 때문에 최소화해야 한다
 
 ### 성능
 
-`Work Stealing`까지 하면서 Thread Context Switch를 피하려는 이유는
+고루틴은 다음과 같은 장점을 갖는다
 
-고루틴 Context Switch가 Cost가 훨씬 적기 때문이다
+- Memory를 적게 소모한다
+  - 고루틴은 스택에서 2KB 정도를 사용하고 필요에 따라 힙을 사용한다
+  - Thread의 경우 1MB 정도 사용한다
 
-둘 사이에는 5~10배 정도의 실행속도 차이가 있다
+- 생성/소멸 시 비용이 적다
+  - Thread를 생성/소멸할 경우 리소스의 할당 혹은 반납 등의 추가 비용이 필요하다
+  
+- Context Switch Cost가 적다
+  - 변경되는 자원 자체가 적다
+  - **User <-> Kernal 전환이 없이 실행된다**
 
 동일한 Thread와 코어에서 고루틴 간의 모든 처리나 메세지 전달 실행된다
 
