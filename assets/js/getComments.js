@@ -2,21 +2,32 @@ document.addEventListener("DOMContentLoaded", updateCommentCount);
 
 async function updateCommentCount() {
     const repository = "ChoHon/chohon.github.io";
+    const baseUrl = "https://chohon.github.io"
 
     try {
         const response = await fetch(`https://api.github.com/repos/${repository}/issues`);
         if (!response.ok) { throw new Error("Failed to fetch issues"); }
         const issues = await response.json();
 
-        const issueDataMap = new Map(
-            issues.map(({ title, comments }) => [title, comments])
-        );
+        const issueDataMap = new Map();
+        issues.forEach(issue => {
+            const { body, comments } = issue;
+            const lines = body.split("\n");
 
-        document.querySelectorAll(".archive__item").forEach(element => {
-            const postTitle = element.querySelector(".archive__item-title").innerText;
-            const count = issueDataMap.get(postTitle) ?? 0;
+            lines.forEach(line => {
+                if (line.includes(baseUrl)) {
+                    const url = line.split("]")[0].replace("[", "");
+                    const { pathname } = new URL(url);
+                    issueDataMap.set(pathname.slice(0, -1), comments);
+                }
+            })                   
+        })
 
-            element.querySelector(".comment_count").textContent = count;
+        document.querySelectorAll(".comment_count").forEach(element => {
+            const pathname = element.getAttribute("pathname")
+            const count = issueDataMap.get(pathname) ?? 0;
+
+            element.textContent = count;
         });
     } catch (error) {
         console.error("댓글 카운트 불러오기 실패:", error);
