@@ -27,5 +27,14 @@
         {% endif %}
       </span>
     {% endif %}
+
+    <br />
+
+    {% if document.comments %}
+    <span class="page__meta-comments">
+      <i class="far fa-fw fa-comment-dots" aria-hidden="true"></i>
+      <span class="comment_count" pathname="{{ document.id }}">{{ document.comments }}</span> Comments
+    </span>
+    {% endif %}
   </p>
 {% endif %}
