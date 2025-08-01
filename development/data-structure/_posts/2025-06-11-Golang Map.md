@@ -2,11 +2,10 @@
 title: "Golang Map"
 categories:
   - development
-  - cs
+  - data-structure
 tags:
-  - Backend
+  - Golang
   - 자료구조
-  - go
 last_modified_at: 2025-06-12
 toc: true
 ---
