@@ -17,3 +17,6 @@ docs:
         url: /dev/network
       - title: "Data Structure"
         url: /dev/ds
+      - title: "Algorithm"
+        url: /dev/algorithm
+
