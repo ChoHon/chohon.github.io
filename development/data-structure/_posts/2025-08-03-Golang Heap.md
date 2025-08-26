@@ -26,86 +26,84 @@ Push와 Pop의 시간 복잡도 N(logN)
 
 ```go
 type Heap struct {
-	arr    []int
-	length int
+ arr    []int
+ length int
 }
 
 func NewHeap() *Heap {
-	return &Heap{
-		arr:    []int{-1},
-		length: 0,
-	}
+ return &Heap{
+  arr:    []int{-1},
+  length: 0,
+ }
 }
 
 // Index 0은 사용하지 않기 때문에 실제 length는 len(h.arr)보다 1개 작음
 func (h *Heap) Len() int {
-	return h.length
+ return h.length
 }
 
 // Pop을 실행하면 반환될 값
 func (h *Heap) Root() int {
-	if h.length == 0 {
-		return -1
-	}
+ if h.length == 0 {
+  return -1
+ }
 
-	return h.arr[1]
+ return h.arr[1]
 }
 ```
 
 ### Push
+
 ```go
 func (h *Heap) Push(v int) {
-	h.arr = append(h.arr, v)
-	h.length++
+ h.arr = append(h.arr, v)
+ h.length++
 
-	curr := h.length
-	for curr > 1 {
-		parent := curr / 2
-		if h.arr[curr] < h.arr[parent] {
-			h.arr[curr], h.arr[parent] = h.arr[parent], h.arr[curr]
-			curr = parent
-			continue
-		}
+ curr := h.length
+ for curr > 1 {
+  parent := curr / 2
+  if h.arr[curr] < h.arr[parent] {
+   h.arr[curr], h.arr[parent] = h.arr[parent], h.arr[curr]
+   curr = parent
+   continue
+  }
 
-		return
-	}
+  return
+ }
 }
 ```
 
 ### Pop
+
 ```go
 func (h *Heap) Pop() int {
-	if h.length == 0 {
-		return -1
-	}
+ if h.length == 0 {
+  return -1
+ }
 
-	popValue := h.Root()
-	h.arr[1] = h.arr[h.length]
-	h.arr = h.arr[:h.length]
-	h.length--
+ popValue := h.Root()
+ 
+ h.arr[1] = h.arr[h.length]
+ h.arr = h.arr[:h.length] // 데이터 이동 없이 O(1)의 시간복잡도로 처리됨
+ h.length--
 
-	curr := 1
-	for {
-		minChild := 0
-		left := curr * 2
-		right := (curr * 2) + 1
+ curr, left, right := 1, 2, 3
+ for left <= h.length {
+  minChild := right
+  if right > h.length || h.arr[left] < h.arr[right] {
+    minchild = left
+  }
 
-		if left > h.length {
-			break
-		} else if right > h.length || h.arr[left] < h.arr[right] {
-			minChild = left
-		} else {
-			minChild = right
-		}
+  if h.arr[curr] <= h.arr[minChild] {
+    return popValue
+  }
 
-		if h.arr[curr] > h.arr[minChild] {
-			h.arr[curr], h.arr[minChild] = h.arr[minChild], h.arr[curr]
-			curr = minChild
-			continue
-		}
+  h.arr[curr], h.arr[minChild] = h.arr[minChild], h.arr[curr]
+  curr = minChild
+  left = curr * 2
+  right = (curr * 2) + 1
+ }
 
-		break
-	}
-	return popValue
+ return popValue
 }
 ```
