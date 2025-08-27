@@ -33,3 +33,4 @@ _site
 
 # VS Code
 .vscode
+.markdownlint.json
