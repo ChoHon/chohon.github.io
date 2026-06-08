@@ -16,3 +16,45 @@ search: false
     background-color: #0c4a6e;
     color: #fff;
 }
+
+/* Series Navigation */
+.series-nav {
+  margin-bottom: 1.5em;
+  padding: 1em 1.25em;
+  border: 1px solid mix(#fff, #252a34, 20%);
+  border-left: 4px solid #00adb5;
+  border-radius: 4px;
+  background-color: mix(#000, #252a34, 15%);
+  font-size: 0.9em;
+
+  &__header {
+    margin-bottom: 0.6em;
+    color: #eaeaea;
+
+    i { margin-right: 0.4em; color: #00adb5; }
+  }
+
+  &__count {
+    float: right;
+    font-size: 0.85em;
+    color: mix(#fff, #252a34, 50%);
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+
+  &__item {
+    padding: 0.2em 0;
+    color: mix(#fff, #252a34, 60%);
+
+    a { color: mix(#00adb5, #eaeaea, 40%); }
+    a:hover { color: #00adb5; }
+
+    &--current {
+      font-weight: bold;
+      color: #eaeaea;
+    }
+  }
+}

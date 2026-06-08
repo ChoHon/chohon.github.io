@@ -1,0 +1,24 @@
+{% if page.series %} {% assign series_posts = site.posts | where: "series",
+page.series | sort: "series_order" %} {% if series_posts.size > 1 %}
+<div class="series-nav">
+  <div class="series-nav__header">
+    <i class="fas fa-list"></i> 시리즈: <strong>{{ page.series }}</strong>
+    <span class="series-nav__count">{{ series_posts.size }}편</span>
+  </div>
+  <ol class="series-nav__list">
+    {% for post in series_posts %}
+    <li
+      class="series-nav__item{% if post.url == page.url %} series-nav__item--current{% endif %}"
+    >
+      {% if post.url == page.url %}
+      <span>{{ post.series_order }}. {{ post.title }}</span>
+      {% else %}
+      <a href="{{ post.url | relative_url }}"
+        >{{ post.series_order }}. {{ post.title }}</a
+      >
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</div>
+{% endif %} {% endif %}
